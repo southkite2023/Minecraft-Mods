@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'Minecraft-Mods'
+include 'yuashie-core'
+project(':yuashie-core').projectDir = file('mods/yuashie-core')

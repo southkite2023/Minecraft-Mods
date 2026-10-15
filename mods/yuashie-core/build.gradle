@@ -1,0 +1,42 @@
+plugins {
+    id 'net.fabricmc.fabric-loom'
+}
+base { archivesName = 'yuashie-core' }
+
+loom {
+    splitEnvironmentSourceSets()
+    mods {
+        "yuashie_core" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+processResources {
+    def properties = [
+        version: project.version,
+        minecraft_version: project.minecraft_version,
+        loader_version: project.loader_version,
+        fabric_api_version: project.fabric_api_version
+    ]
+    inputs.properties(properties)
+    filesMatching('fabric.mod.json') { expand(properties) }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+tasks.named('jar') {
+    from(rootProject.file('LICENSE')) { rename { 'LICENSE_yuashie-core' } }
+}

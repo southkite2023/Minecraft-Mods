@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "yuashie_core",
+  "version": "${version}",
+  "name": "Yuashie Core",
+  "description": "Foundation for Yuashie's Minecraft Fabric mods.",
+  "authors": [
+    "Yuashie"
+  ],
+  "contact": {
+    "sources": "https://github.com/southkite2023/Minecraft-Mods",
+    "issues": "https://github.com/southkite2023/Minecraft-Mods/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "cn.yuashie.core.YuashieCore"
+    ],
+    "client": [
+      "cn.yuashie.core.client.YuashieCoreClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=25",
+    "fabric-api": ">=${fabric_api_version}"
+  }
+}

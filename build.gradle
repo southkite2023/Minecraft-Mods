@@ -1,0 +1,11 @@
+plugins {
+    id 'base'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}" apply false
+}
+allprojects {
+    group = providers.gradleProperty('maven_group').get()
+    version = providers.gradleProperty('mod_version').get()
+}
+tasks.named('build') { dependsOn ':yuashie-core:build' }
+tasks.named('clean') { dependsOn ':yuashie-core:clean' }
+tasks.named('check') { dependsOn ':yuashie-core:check' }
